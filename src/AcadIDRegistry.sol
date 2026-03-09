@@ -30,9 +30,7 @@ contract AcadIDRegistry is Ownable {
 
     constructor() Ownable(msg.sender) {}
 
-    /**
-     * Register and verify a student with ACAD ID
-     */
+    
     function registerStudent(
         address student,
         string calldata acadId,
@@ -51,9 +49,7 @@ contract AcadIDRegistry is Ownable {
         emit StudentRegistered(student, acadId, metadataURI);
     }
 
-    /**
-     * Update credential metadata (ex: new certificates)
-     */
+    
     function updateMetadata(
         address student,
         string calldata newMetadataURI
@@ -66,9 +62,7 @@ contract AcadIDRegistry is Ownable {
         emit StudentUpdated(student, newMetadataURI);
     }
 
-    /**
-     * Revoke verification if fraud detected
-     */
+   
     function revokeVerification(address student)
         external
         onlyOwner
@@ -80,9 +74,7 @@ contract AcadIDRegistry is Ownable {
         emit VerificationRevoked(student);
     }
 
-    /**
-     * Check if student is verified
-     */
+  
     function isVerified(address student)
         external
         view
@@ -91,9 +83,7 @@ contract AcadIDRegistry is Ownable {
         return students[student].verified;
     }
 
-    /**
-     * Get full student data
-     */
+ 
     function getStudent(address student)
         external
         view
@@ -106,4 +96,5 @@ contract AcadIDRegistry is Ownable {
         Student memory s = students[student];
         return (s.acadId, s.metadataURI, s.verified);
     }
+
 }

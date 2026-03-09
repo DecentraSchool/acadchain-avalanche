@@ -46,17 +46,13 @@ contract ScholarshipPool {
         owner = msg.sender;
     }
 
-    /**
-     * Fund the scholarship pool
-     */
+   
     function fundPool() external payable {
         require(msg.value > 0, "Must send AVAX");
         emit PoolFunded(msg.sender, msg.value);
     }
 
-    /**
-     * Student applies for scholarship
-     */
+   
     function applyForScholarship(uint256 amount) external {
 
         require(
@@ -86,9 +82,7 @@ contract ScholarshipPool {
         );
     }
 
-    /**
-     * Approve scholarship and send funds
-     */
+  
     function approve(uint256 id) external onlyOwner {
 
         Application storage app = applications[id];
@@ -110,9 +104,7 @@ contract ScholarshipPool {
         );
     }
 
-    /**
-     * Check pool balance
-     */
+ 
     function getPoolBalance()
         external
         view
@@ -120,4 +112,5 @@ contract ScholarshipPool {
     {
         return address(this).balance;
     }
+
 }

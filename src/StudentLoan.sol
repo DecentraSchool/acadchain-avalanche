@@ -46,9 +46,7 @@ contract StudentLoan {
         registry = IRegistry(_registry);
     }
 
-    /**
-     * Student requests loan
-     */
+
     function requestLoan(
         uint256 amount,
         uint256 repaymentAmount
@@ -82,9 +80,6 @@ contract StudentLoan {
         );
     }
 
-    /**
-     * Lender funds the loan
-     */
     function fundLoan(uint256 loanId) external payable {
 
         Loan storage loan = loans[loanId];
@@ -104,9 +99,7 @@ contract StudentLoan {
         );
     }
 
-    /**
-     * Borrower repays loan
-     */
+    
     function repay(uint256 loanId) external payable {
 
         Loan storage loan = loans[loanId];
@@ -131,9 +124,6 @@ contract StudentLoan {
         );
     }
 
-    /**
-     * View loan details
-     */
     function getLoan(uint256 loanId)
         external
         view
@@ -141,4 +131,5 @@ contract StudentLoan {
     {
         return loans[loanId];
     }
+
 }
